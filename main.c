@@ -1,3 +1,13 @@
+/**
+ * @file main.c
+ * @author daniel1820kobe@gmail.com
+ * @brief Demo of using traffic_light.h
+ * @version 0.1
+ * @date 2022-03-05
+ * 
+ * @copyright Copyright (c) 2022 R-CO. All rights reserved. 
+ * This project is released under the GNU Public License.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 

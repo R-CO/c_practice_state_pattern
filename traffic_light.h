@@ -1,3 +1,13 @@
+/**
+ * @file traffic_light.h
+ * @author daniel1820kobe@gmail.com
+ * @brief A practice of using pure C to implement state pattern.
+ * @version 0.1
+ * @date 2022-03-05
+ * 
+ * @copyright Copyright (c) 2022 R-CO. All rights reserved. 
+ * This project is released under the GNU Public License.
+ */
 #ifndef TRAFFIC_LIGHT_H
 #define TRAFFIC_LIGHT_H
 
