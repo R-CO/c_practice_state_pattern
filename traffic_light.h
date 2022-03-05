@@ -2,7 +2,7 @@
  * @file traffic_light.h
  * @author daniel1820kobe@gmail.com
  * @brief A practice of using pure C to implement state pattern.
- * @version 0.1
+ * @version 0.2
  * @date 2022-03-05
  * 
  * @copyright Copyright (c) 2022 R-CO. All rights reserved. 
@@ -14,7 +14,6 @@
 typedef struct _TrafficLight *TrafficLightPtr;
 
 typedef struct _TrafficLightState {
-  char color[16];
   void (*turn_light)(TrafficLightPtr light);
 } TrafficLightState;
 
@@ -32,6 +31,8 @@ typedef struct _YellowLightState {
 
 typedef struct _TrafficLight {
   // private:
+  char color[16];
+
   TrafficLightState *current_state;
 
   RedLightState red_light_state;

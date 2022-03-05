@@ -2,7 +2,7 @@
  * @file traffic_light.c
  * @author daniel1820kobe@gmail.com
  * @brief A practice of using pure C to implement state pattern.
- * @version 0.1
+ * @version 0.2
  * @date 2022-03-05
  * 
  * @copyright Copyright (c) 2022 R-CO. All rights reserved. 
@@ -36,40 +36,43 @@ void init_traffic_light(TrafficLight *light, EnumLightColor color) {
 
   switch (color) {
     case ENUM_LIGHT_COLOR_RED: {
+      strncpy(light->color, "red", sizeof(light->color) - 1);
       light->current_state = (TrafficLightState *)&light->red_light_state;
     } break;
     case ENUM_LIGHT_COLOR_GREEN: {
+      strncpy(light->color, "green", sizeof(light->color) - 1);
       light->current_state = (TrafficLightState *)&light->green_light_state;
     } break;
     case ENUM_LIGHT_COLOR_YELLOW: {
+      strncpy(light->color, "yellow", sizeof(light->color) - 1);
       light->current_state = (TrafficLightState *)&light->yellow_light_state;
     } break;
   }
 }
 
 void init_red_light_state(RedLightState *state) {
-  strncpy(state->s.color, "red", sizeof(state->s.color) - 1);
   state->s.turn_light = red_light_state_turn_light;
 }
 
 void init_green_light_state(GreenLightState *state) {
-  strncpy(state->s.color, "green", sizeof(state->s.color) - 1);
   state->s.turn_light = green_light_state_turn_light;
 }
 void init_yellow_light_state(YellowLightState *state) {
-  strncpy(state->s.color, "yellow", sizeof(state->s.color) - 1);
   state->s.turn_light = yellow_light_state_turn_light;
 }
 
 void red_light_state_turn_light(TrafficLightPtr light) {
+  strncpy(light->color, "green", sizeof(light->color) - 1);
   light->set_state(light, (TrafficLightState *)&light->green_light_state);
 }
 
 void green_light_state_turn_light(TrafficLightPtr light) {
+  strncpy(light->color, "yellow", sizeof(light->color) - 1);
   light->set_state(light, (TrafficLightState *)&light->yellow_light_state);
 }
 
 void yellow_light_state_turn_light(TrafficLightPtr light) {
+  strncpy(light->color, "red", sizeof(light->color) - 1);
   light->set_state(light, (TrafficLightState *)&light->red_light_state);
 }
 
@@ -78,7 +81,7 @@ void traffic_light_set_state(TrafficLightPtr light, TrafficLightState *state) {
 }
 
 char *traffic_light_get_color(TrafficLightPtr light) {
-  return light->current_state->color;
+  return light->color;
 }
 
 void traffic_light_turn_light(TrafficLightPtr light) {
